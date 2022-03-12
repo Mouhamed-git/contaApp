@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <span class="pointer" (click)="goToHome()">ContaApp</span>
+
+    <span class="flex-middle"></span>
+
+    <mat-icon>home</mat-icon> 
+    <span class="me-4 pointer" (click)="goToHome()">Accueil</span>
+
+    <mat-icon>payments</mat-icon>
+    <span class="me-4 pointer" (click)="openPaymentDialog()">Payement</span>
+
+    <mat-icon>payments</mat-icon>
+    <span class="pointer" (click)="openDecaissementDialog()"> Decaissement</span>
+
+    <span class="flex-end"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()"> -->
+      <span class="pointer" color="red" (click)="logout()">Deconnexion</span>
+      <mat-icon>logout</mat-icon>
+    <!-- </button> -->
+</mat-toolbar>
