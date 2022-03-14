@@ -1,12 +1,12 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'nodejs'
-    }
+//     tools {
+//         nodejs 'nodejs'
+//     }
     stages {
-    //    stage ('Checkout') {
-    //        git checkout -b master
-    //    }
+        stage ('Checkout') {
+           git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
+        }
         stage ('Intialize') {
             steps {
                 sh 'npm install'
@@ -15,13 +15,13 @@ pipeline {
 
         stage ('build') {
            steps {
-                sh 'npm run build'
+                sh 'npm run build --prod'
             }
        }
 
         stage ('deploy') {
            steps {
-               sshagent['nginx'] {
+               sshagent(['nginx']) {
                    sh 'rm -rf ubuntu@ec2-54-147-154-125.compute-1.amazonaws.com:~/gestion-app'
                    sh 'scp -o StrictHostKeyChecking=no dist/** ubuntu@ec2-54-147-154-125.compute-1.amazonaws.com:~/'
                }
