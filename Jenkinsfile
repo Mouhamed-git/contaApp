@@ -5,7 +5,10 @@ pipeline {
 //     }
     stages {
         stage ('Checkout') {
-           git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
+          steps {
+              git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
+          }
+     
         }
         stage ('Intialize') {
             steps {
