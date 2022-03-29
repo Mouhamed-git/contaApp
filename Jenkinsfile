@@ -3,7 +3,7 @@ pipeline {
 //     tools {
 //         nodejs 'nodejs'
 //     }
-  //  stages {
+    stages {
     //    stage ('Checkout') {
       //    steps {
         //      git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
