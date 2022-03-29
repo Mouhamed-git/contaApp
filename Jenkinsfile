@@ -5,7 +5,9 @@ pipeline {
     // }
     stages {
        stage ('Checkout') {
+         steps {
             sh 'git checkout -b master'
+         }
         }
         stage ('Initialize') {
             steps {
@@ -21,7 +23,7 @@ pipeline {
 
         stage ('deploy') {
            steps {
-               sshagent['nginx'] {
+               sshagent(['nginx']) {
                    sh 'rm -rf ubuntu@ec2-35-172-128-125.compute-1.amazonaws.com:~/gestion-app'
                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-35-172-128-125.compute-1.amazonaws.com:~/'
                }
