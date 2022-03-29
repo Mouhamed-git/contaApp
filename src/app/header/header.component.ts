@@ -30,8 +30,6 @@ export class HeaderComponent implements OnInit {
       width: '30%',
       // data: {name: this.name, animal: this.animal},
     });
-
-   
   }
 
   logout() {
