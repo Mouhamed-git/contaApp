@@ -4,12 +4,13 @@ pipeline {
 //         nodejs 'nodejs'
 //     }
     stages {
-    //    stage ('Checkout') {
-      //    steps {
-        //      git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
-          //}
+        stage ('Checkout') {
+          steps {
+             // git branch: 'master', url: 'https://github.com/Mouhamed-git/contaApp.git/'
+             sh 'git checkout -b master'
+          }
      
-    //    }
+        }
         stage ('Intialize') {
             steps {
                 sh 'npm install'
