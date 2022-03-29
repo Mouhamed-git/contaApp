@@ -6,7 +6,7 @@ pipeline {
     stages {
        stage ('Checkout') {
          steps {
-            sh 'git checkout -b master'
+            sh 'git checkout master'
          }
         }
         stage ('Initialize') {
