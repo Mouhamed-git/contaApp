@@ -4,10 +4,10 @@ pipeline {
         nodejs 'nodejs'
     }
     stages {
-    //    stage ('Checkout') {
-    //        git checkout -b master
-    //    }
-        stage ('Intialize') {
+       stage ('Checkout') {
+            git checkout -b master
+        }
+        stage ('Initialize') {
             steps {
                 sh 'npm install'
             }

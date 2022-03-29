@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
       this.toast.observe({
         loading: 'Connexion en cours...',
         success: 'Connexion réussi',
-        // error: 'Email/Mot de passe incorrect'
-        error: ({ message }) => `${message}`
+        error: 'Email/Mot de passe incorrect'
+        //error: ({ message }) => `${message}`
       })
     ).subscribe(data => {
       console.log(data); 
