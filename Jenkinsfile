@@ -23,10 +23,10 @@ pipeline {
       
         stage ('Source-Code-Analysis') {
           steps {
-            sh 'rm owasp* || true'
+            sh 'rm /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/odc-reports || true'
             sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
             sh 'bash owasp-dependency-check.sh'
-            sh 'cat /var/lib/jenkins/reports/OWASP-Dependency-Check/reports/dependency-check-report.xml'
+            sh 'cat /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/odc-reports/dependency-check-report.json'
           }
         }
       
