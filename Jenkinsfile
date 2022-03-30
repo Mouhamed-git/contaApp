@@ -15,18 +15,16 @@ pipeline {
       
         stage ('Check-Git-Secret') {
           steps {
-            sh 'rm truefflehog-output || true'
-            sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog-output'
-            sh 'cat truefflehog-output'
+            sh 'rm truefflehog.json || true'
+            sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog.json'
+            sh 'cat truefflehog.json'
           }
         }
       
         stage ('Source-Code-Analysis') {
           steps {
             sh 'rm owasp* || true'
-            sh 'wget "https://raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRDWGJAIT2DAKWNVYYSDYCWA" '
-            sh 'mv owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRDWGJAIT2DAKWNVYYSDYCWA owasp-dependency-check.sh'
-            sh 'chmod +x owasp-dependency-check.sh'
+            sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
             sh 'bash owasp-dependency-check.sh'
             sh 'cat /var/lib/jenkins/reports/OWASP-Dependency-Check/reports/dependency-check-report.xml'
           }
