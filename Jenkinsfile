@@ -32,6 +32,7 @@ pipeline {
       
         stage ('build') {
            steps {
+                sh 'rm /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/dist || true'
                 sh 'npm run build'
             }
         }
@@ -39,7 +40,7 @@ pipeline {
         stage ('deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-34-238-246-116.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-87-227-172.compute-1.amazonaws.com :~/'
                }
          }
        }
