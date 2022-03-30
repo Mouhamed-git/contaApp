@@ -6,19 +6,21 @@ pipeline {
             sh 'git checkout master'
          }
         }
+      
         stage ('Initialize') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Check-Git-Secret) {
+      
+        stage ('Check-Git-Secret') {
           steps {
             sh 'rm truefflehog-output || true'
             sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog-output'
             sh 'cat truefflehog-output'
           }
-      
         }
+      
         stage ('build') {
            steps {
                 sh 'npm run build'
