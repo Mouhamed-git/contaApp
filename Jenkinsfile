@@ -24,7 +24,7 @@ pipeline {
         stage ('Source-Code-Analysis') {
           steps {
             sh 'rm owasp* || true'
-            sh 'wget "https://raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZTELCDU2T45U67PDCMYSDXY4Q'
+            sh 'wget https://raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZTELCDU2T45U67PDCMYSDXY4Q'
             sh 'mv owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZTELCDU2T45U67PDCMYSDXY4Q owasp-dependency-check.sh'
             sh 'chmod +x owasp-dependency-check.sh'
             sh 'bash owasp-dependency-check.sh'
