@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    // tools {
-    //     nodejs 'nodejs'
-    // }
     stages {
        stage ('Checkout') {
          steps {
@@ -13,21 +10,27 @@ pipeline {
             steps {
                 sh 'npm install'
             }
-       }
-
+        }
+        stage('Check-Git-Secret) {
+          steps {
+            sh 'rm truefflehog-output || true'
+            sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog-output'
+            sh 'cat truefflehog-output'
+          }
+      
+        }
         stage ('build') {
            steps {
                 sh 'npm run build'
             }
-       }
+        }
 
         stage ('deploy') {
            steps {
                sshagent(['nginx']) {
-                 //  sh 'rm -rf ubuntu@ec2-35-172-128-125.compute-1.amazonaws.com:~/gestion-app'
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-35-172-128-125.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-34-238-246-116.compute-1.amazonaws.com:~/'
                }
-           }
+         }
        }
     }
 }
