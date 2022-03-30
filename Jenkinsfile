@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-       stage ('Checkout') {
+       stage ('Checkout-Master-Branch') {
          steps {
             sh 'git checkout master'
          }
@@ -26,18 +26,27 @@ pipeline {
             sh 'rm -rf odc-reports/** || true'
             sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
             sh 'bash owasp-dependency-check.sh'
-            sh 'cat /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/odc-reports/dependency-check-report.json'
+            sh 'cat dependency-check-report.json'
           }
         }
       
-        stage ('build') {
+        stage ('SAST') {
+          steps {
+            withSonarQubeEnv('sonar') {
+              sh 'mvn sonar:sonar'
+              sh 'cat target/sonar/report-task.txt'
+            }
+          }
+        }
+      
+        stage ('Build') {
            steps {
                 sh 'rm -rf dist || true'
                 sh 'npm run build'
             }
         }
 
-        stage ('deploy') {
+        stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-87-227-172.compute-1.amazonaws.com:~/'
