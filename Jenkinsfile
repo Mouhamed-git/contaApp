@@ -23,7 +23,7 @@ pipeline {
       
         stage ('Source-Code-Analysis') {
           steps {
-            sh 'rm /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/odc-reports || true'
+            sh 'rm -rf odc-reports/** || true'
             sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
             sh 'bash owasp-dependency-check.sh'
             sh 'cat /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/odc-reports/dependency-check-report.json'
@@ -32,7 +32,7 @@ pipeline {
       
         stage ('build') {
            steps {
-                sh 'rm /var/lib/jenkins/workspace/contaApp-devsecops-pipeline/dist || true'
+                sh 'rm -rf dist || true'
                 sh 'npm run build'
             }
         }
@@ -40,7 +40,7 @@ pipeline {
         stage ('deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-87-227-172.compute-1.amazonaws.com :~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-87-227-172.compute-1.amazonaws.com:~/'
                }
          }
        }
