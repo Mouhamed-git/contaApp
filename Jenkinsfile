@@ -32,9 +32,9 @@ pipeline {
       
         stage ('SAST') {
           steps {
+            def scannerHome = tool 'SonarQubeScanner4'
             withSonarQubeEnv('sonar') {
-              sh 'mvn sonar:sonar'
-              sh 'cat target/sonar/report-task.txt'
+                sh "${scannerHome}/bin/sonar-scanner"
             }
           }
         }
@@ -49,7 +49,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-165-68-177.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-92-48-109.compute-1.amazonaws.com:~/'
                }
          }
        }
