@@ -30,7 +30,7 @@
           </mat-form-field>
     </div>
 
-    <div *ngIf="transactions.length == 0">
+    <div *ngIf="transactions.length === 0">
       <h4 class="fs-3 fw-bold text-center m-4">Aucun transaction pour le moment</h4>
     </div>
 
@@ -39,7 +39,7 @@
             <mat-card  matSort>
                 <div mat-card-title class="d-flex justify-content-between fs-6">
                   <span color="primary">{{ data?.type }}</span>
-                  <span [ngStyle]="{ 'color': data.status == 0 ? 'red' : 'green'}">{{ getStatus(data.status) }}</span>
+                  <span [ngStyle]="{ 'color': data.status === 0 ? 'red' : 'green'}">{{ getStatus(data.status) }}</span>
                 </div>
                
                 <mat-divider></mat-divider>
