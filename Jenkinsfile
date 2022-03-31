@@ -1,4 +1,4 @@
-def scannerHome = tool name: 'SonarQube Scanner 4.7.0.2747', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+def scannerHome = tool name: 'SonarQube Scanner 4.7.0.2747';
 pipeline {
     agent any
     stages {
