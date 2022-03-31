@@ -1,3 +1,4 @@
+def scannerHome = tool name'SonarQube Scanner 4.7.0.2747', type: 'hudson.plugins.sonar.SonarRunnerInstallation'; 
 pipeline {
     agent any
     stages {
@@ -33,7 +34,7 @@ pipeline {
         stage ('SAST') {
           steps {
               script {
-                 scannerHome = tool 'SonarQube Scanner 4.7.0.2747'
+                
               }
               withSonarQubeEnv('sonar') {
                 sh "${scannerHome}/bin/sonar-scanner"
