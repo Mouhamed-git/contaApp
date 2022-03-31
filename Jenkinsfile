@@ -33,9 +33,6 @@ pipeline {
       
         stage ('SAST') {
           steps {
-              script {
-                
-              }
               withSonarQubeEnv('sonar') {
                 sh "${scannerHome}/bin/sonar-scanner"
               }
