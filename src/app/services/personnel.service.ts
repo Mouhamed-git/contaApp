@@ -5,19 +5,21 @@ import { from } from 'rxjs';
 import { TransactionModel } from '../shared/models/transaction-model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class PersonnelService {
+    private dbPath: string = 'personnels';
+    private personnelRef: CollectionReference;
 
-  private dbPath: string = "personnels";
-  private personnelRef: CollectionReference;
-  
-  constructor(private firestore: Firestore) { 
-    this.personnelRef = collection(this.firestore, this.dbPath);
+    constructor(private firestore: Firestore) {
+        this.personnelRef = collection(this.firestore, this.dbPath);
+    }
 
-  }
-
-  getAll() {
-    return from(getDocs(this.personnelRef).then(querySnap => querySnap.docChanges().map(docChanges => docChanges.doc.data())));
-  }
+    getAll() {
+        return from(
+            getDocs(this.personnelRef).then((querySnap) =>
+                querySnap.docChanges().map((docChanges) => docChanges.doc.data())
+            )
+        );
+    }
 }

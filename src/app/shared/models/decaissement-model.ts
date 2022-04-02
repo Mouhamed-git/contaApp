@@ -1,4 +1,4 @@
-import { DecaissementType } from "../enums/decaissement-type";
+import { DecaissementType } from '../enums/decaissement-type';
 
 export class DecaissementModel {
     decaissementType?: DecaissementType;
@@ -8,5 +8,5 @@ export class DecaissementModel {
     amountMission?: string;
     amount?: string;
     description?: string;
-    decaissementDate?: string;  
+    decaissementDate?: string;
 }

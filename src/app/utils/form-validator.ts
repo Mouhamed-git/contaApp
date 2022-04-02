@@ -1,15 +1,17 @@
-import { NgModel } from "@angular/forms";
+import { NgModel } from '@angular/forms';
 
 export class FormValidator {
-    static getError(model: NgModel, value?: number) {
+    static getError(model: NgModel) {
         if (model && model.errors) {
             if (model.errors['required']) {
                 return 'Champ obligatoire';
             }
             if (model.errors['pattern']) {
                 if (model.name.endsWith('mot de passe')) {
-                    return 'le mot de passe doit contenir au moins 8 character' +
+                    return (
+                        'le mot de passe doit contenir au moins 8 character' +
                         ' un chiffre, une lettre majuscule et un character special'
+                    );
                 }
             }
             if (model.errors['minlength']) {
@@ -22,7 +24,7 @@ export class FormValidator {
                 return `${model.name} ne peut etre supérieure à `;
             }
         }
-        return "";
+        return '';
     }
 
     static isValid(field: NgModel) {
