@@ -52,7 +52,7 @@ pipeline {
 //                sshagent(['nginx']) {
 //                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-201-89-145.compute-1.amazonaws.com:~/'
 //                }
-//          }
-       }
+//            }
+//        }
     }
 }
