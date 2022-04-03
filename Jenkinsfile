@@ -21,20 +21,20 @@ pipeline {
           }
         }
       
-        stage ('SCA') {
-          steps {
-            sh 'rm -rf odc-reports/** || true'
-            sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
-            sh 'bash owasp-dependency-check.sh'
-            sh 'cat odc-reports/dependency-check-report.json'
-          }
-        }
+//         stage ('SCA') {
+//           steps {
+//             sh 'rm -rf odc-reports/** || true'
+//             sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
+//             sh 'bash owasp-dependency-check.sh'
+//             sh 'cat odc-reports/dependency-check-report.json'
+//           }
+//         }
       
         stage ('SAST') {
           steps {
               script {
-                def scannerHome = tool 'sonarscan';
-                withSonarQubeEnv('sonar') {
+                def scannerHome = tool 'sonar-scanner';
+                withSonarQubeEnv('sonarQube') {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
               }
