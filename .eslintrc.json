@@ -38,7 +38,9 @@
           }
         ],
         "@angular-eslint/no-empty-lifecycle-method": "off",
-        "@angular-eslint/use-lifecycle-interface": "off"
+        "@angular-eslint/use-lifecycle-interface": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off"
       }
     },
     {

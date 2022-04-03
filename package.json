@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky install",
-    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --quiet --fix",
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
     "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write"
   },
   "private": true,
@@ -50,7 +50,8 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.11.0",
     "@typescript-eslint/parser": "5.11.0",
-    "eslint": "^8.2.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.0",
