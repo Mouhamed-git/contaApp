@@ -1,4 +1,3 @@
-def scannerHome = tool name: 'SonarQube Scanner 4.7.0.2747';
 pipeline {
     agent any
     stages {
@@ -33,8 +32,11 @@ pipeline {
       
         stage ('SAST') {
           steps {
-              withSonarQubeEnv('sonar') {
-                sh "${scannerHome}/bin/sonar-scanner"
+              script {
+                def scannerHome = tool 'sonarscan';
+                withSonarQubeEnv('sonar') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
               }
           }
         }
@@ -49,7 +51,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-92-48-109.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-203-179-185.compute-1.amazonaws.com:~/'
                }
          }
        }
