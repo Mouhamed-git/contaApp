@@ -30,29 +30,29 @@ pipeline {
           }
         }
       
-        stage ('SAST') {
-          steps {
-              script {
-                def scannerHome = tool 'sonar-scanner';
-                withSonarQubeEnv('sonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
-                }
-              }
-          }
-        }
-      
-//         stage ('Build') {
-//            steps {
-//                 sh 'npm run build'
-//             }
+//         stage ('SAST') {
+//           steps {
+//               script {
+//                 def scannerHome = tool 'sonar-scanner';
+//                 withSonarQubeEnv('sonarQube') {
+//                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
+//                 }
+//               }
+//           }
 //         }
+      
+        stage ('Build') {
+           steps {
+                sh 'npm run build'
+            }
+        }
 
-//         stage ('Deploy') {
-//            steps {
-//                sshagent(['nginx']) {
-//                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-201-89-145.compute-1.amazonaws.com:~/'
-//                }
-//            }
-//        }
+        stage ('Deploy') {
+           steps {
+               sshagent(['nginx']) {
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-201-89-145.compute-1.amazonaws.com:~/'
+               }
+           }
+       }
     }
 }
