@@ -1,7 +1,7 @@
 .content {
     margin: 0;
     padding: 0;
-    background: url("../../assets/images/cover4.jpg") no-repeat 0px 0px;
+    background: url('../../assets/images/cover4.jpg') no-repeat 0px 0px;
     min-height: 100vh;
     background-size: cover;
     font-family: 'Raleway', sans-serif;
@@ -92,7 +92,7 @@ button {
 }
 
 button:hover {
-    background-color: #00BCD4;
+    background-color: #00bcd4;
     transition-duration: 5s;
 }
 
@@ -100,11 +100,11 @@ button:hover {
     color: #ffffff;
     text-align: center;
     margin: 0px;
-	font-size: 13px;
+    font-size: 13px;
 }
 
 .register {
-    color: #00BCD4;
+    color: #00bcd4;
     text-decoration: none;
 }
 
@@ -141,19 +141,19 @@ footer {
 
 /*-- /responsive design --*/
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
     h1 {
         font-size: 47px;
     }
 }
 
-@media(max-width:667px) {
+@media (max-width: 667px) {
     h1 {
         font-size: 45px;
     }
 }
 
-@media(max-width:640px) {
+@media (max-width: 640px) {
     p.copyright-agileinfo {
         letter-spacing: 1px;
     }
@@ -162,7 +162,7 @@ footer {
     }
 }
 
-@media(max-width:568px) {
+@media (max-width: 568px) {
     h1 {
         font-size: 40px;
     }
@@ -171,10 +171,10 @@ footer {
     }
 }
 
-@media(max-width:480px) {
+@media (max-width: 480px) {
     .w3l-login-form {
-    margin: 0 3vw;
-}
+        margin: 0 3vw;
+    }
     h1 {
         font-size: 38px;
     }
@@ -183,19 +183,19 @@ footer {
     }
 }
 
-@media(max-width:414px) {
+@media (max-width: 414px) {
     h1 {
         font-size: 34px;
     }
 }
 
-@media(max-width:384px) {
+@media (max-width: 384px) {
     h1 {
         font-size: 30px;
     }
 }
 
-@media(max-width:320px) {
+@media (max-width: 320px) {
     h1 {
         font-size: 25px;
     }

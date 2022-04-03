@@ -15,8 +15,10 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -36,7 +38,9 @@
           }
         ],
         "@angular-eslint/no-empty-lifecycle-method": "off",
-        "@angular-eslint/use-lifecycle-interface": "off"
+        "@angular-eslint/use-lifecycle-interface": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off"
       }
     },
     {

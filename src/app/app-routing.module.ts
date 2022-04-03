@@ -6,27 +6,28 @@ import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angula
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home']);
 
-
 const routes: Routes = [
-  { 
-    path: '', component: HomeComponent,
-    ...canActivate(redirectToLogin)
-  },
+    {
+        path: '',
+        component: HomeComponent,
+        ...canActivate(redirectToLogin),
+    },
 
-  { 
-    path: 'login', 
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
-    ...canActivate(redirectToHome)
-  },
+    {
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then((m) => m.LoginModule),
+        ...canActivate(redirectToHome),
+    },
 
-
-  { 
-    path: '**', redirectTo: '/', pathMatch: 'full'
-  }
+    {
+        path: '**',
+        redirectTo: '/',
+        pathMatch: 'full',
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

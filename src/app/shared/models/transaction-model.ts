@@ -1,6 +1,6 @@
-import { Timestamp } from "firebase/firestore";
-import { DecaissementType } from "../enums/decaissement-type";
-import { TransactionType } from "../enums/transaction-type";
+import { Timestamp } from 'firebase/firestore';
+import { DecaissementType } from '../enums/decaissement-type';
+import { TransactionType } from '../enums/transaction-type';
 
 export class TransactionModel {
     type?: TransactionType;
@@ -14,5 +14,5 @@ export class TransactionModel {
     location?: string;
     duration?: number;
     description?: string;
-    decaissementDate?: Timestamp;  
+    decaissementDate?: Timestamp;
 }
