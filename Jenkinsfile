@@ -50,19 +50,19 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-201-89-145.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-34-227-143-233.compute-1.amazonaws.com:~/'
                }
            }
        }
         
-       stage ('DAST') {
-           steps {
-               sshagent(['zap']) {
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-84-201-26.compute-1.amazonaws.com 
-                       "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://44.201.89.145/" || true'
-               }
-           }
-       }
+//        stage ('DAST') {
+//            steps {
+//                sshagent(['zap']) {
+//                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-84-201-26.compute-1.amazonaws.com 
+//                        "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://44.201.89.145/" || true'
+//                }
+//            }
+//        }
        
     }
 }
