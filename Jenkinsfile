@@ -15,7 +15,7 @@ pipeline {
         
         stage ('Npm Check') {
             steps {
-                sh 'npm audit'
+                sh 'npm audit && npm audit fix'
             }
         }
 //         stage ('Check-Git-Secret') {
