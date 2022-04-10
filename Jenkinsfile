@@ -15,7 +15,7 @@ pipeline {
         
         stage ('npm audit') {
             steps {
-                sh 'npm run lint'
+                sh 'npm audit'
             }
         }
         
