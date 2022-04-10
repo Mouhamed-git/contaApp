@@ -13,7 +13,7 @@ pipeline {
             }
         }
         
-        stage ('lint Staged') {
+        stage ('npm audit') {
             steps {
                 sh 'npm run lint'
             }
@@ -54,13 +54,13 @@ pipeline {
             }
         }
 
-        stage ('Deploy') {
-           steps {
-               sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ ec2-3-83-131-114.compute-1.amazonaws.com:~/'
-               }
-           }
-       }
+//         stage ('Deploy') {
+//            steps {
+//                sshagent(['nginx']) {
+//                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ ec2-3-83-131-114.compute-1.amazonaws.com:~/'
+//                }
+//            }
+//        }
         
 //        stage ('DAST') {
 //            steps {
