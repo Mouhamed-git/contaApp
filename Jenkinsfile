@@ -13,7 +13,7 @@ pipeline {
             }
         }
         
-        stage ('Initialize') {
+        stage ('lint Staged') {
             steps {
                 sh 'npm run format && npm run lint'
             }
