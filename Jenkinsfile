@@ -12,6 +12,13 @@ pipeline {
                 sh 'npm install'
             }
         }
+        
+        stage ('Initialize') {
+            steps {
+                sh 'npm run format && npm run lint'
+            }
+        }
+        
       
 //         stage ('Check-Git-Secret') {
 //           steps {
@@ -50,7 +57,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-34-227-143-233.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ ec2-3-83-131-114.compute-1.amazonaws.com:~/'
                }
            }
        }
