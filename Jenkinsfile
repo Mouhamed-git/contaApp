@@ -1,10 +1,10 @@
 pipeline {
     agent any
     stages {
-       stage ('Checkout-Master-Branch') {
-         steps {
+        stage ('Checkout-Master-Branch') {
+          steps {
             sh 'git checkout master'
-         }
+          }
         }
       
         stage ('Initialize') {
