@@ -15,14 +15,14 @@ import { PersonnelModel } from '../shared/models/personnel-model';
 @Component({
     selector: 'app-decaissement',
     templateUrl: './decaissement.component.html',
-    styleUrls: ['./decaissement.component.scss'],
+    styleUrls: ['./decaissement.component.scss']
 })
 export class DecaissementComponent implements OnInit {
     decaissement: DecaissementModel = new DecaissementModel();
     decaissementTypes: DecaissementType[] = [
         DecaissementType.MISSION,
         DecaissementType.PURCHASE,
-        DecaissementType.VARIOUS,
+        DecaissementType.VARIOUS
     ];
     personnels: PersonnelModel[] = [];
     personnelSelected: PersonnelModel = new PersonnelModel();
@@ -95,7 +95,7 @@ export class DecaissementComponent implements OnInit {
                 this.toast.observe({
                     loading: 'Enregistrement en cours ...',
                     success: 'Décaissement enregistré avec succès',
-                    error: ({ message }) => `${message}`,
+                    error: ({ message }) => `${message}`
                 })
             )
             .subscribe(

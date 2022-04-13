@@ -10,7 +10,7 @@ export enum Mounth {
     SEPTEMBRE = 'SEPTEMBRE',
     OCTOBRE = 'OCTOBRE',
     NOVEMBRE = 'NOVEMBRE',
-    DECEMBRE = 'DECEMBRE',
+    DECEMBRE = 'DECEMBRE'
 }
 
 export const MOUNTHS: Mounth[] = [
@@ -25,5 +25,5 @@ export const MOUNTHS: Mounth[] = [
     Mounth.SEPTEMBRE,
     Mounth.OCTOBRE,
     Mounth.NOVEMBRE,
-    Mounth.DECEMBRE,
+    Mounth.DECEMBRE
 ];

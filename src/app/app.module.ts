@@ -39,7 +39,7 @@ import { TransactionService } from './services/transaction.service';
         PersonnelComponent,
         PaymentComponent,
         DecaissementComponent,
-        HomeComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -62,9 +62,9 @@ import { TransactionService } from './services/transaction.service';
         FormsModule,
         LoginModule,
         HotToastModule.forRoot(),
-        provideFirestore(() => getFirestore()),
+        provideFirestore(() => getFirestore())
     ],
     providers: [AuthService, TransactionService],
-    bootstrap: [AppComponent],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

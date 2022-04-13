@@ -24,7 +24,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
         MatIconModule,
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAuth(() => getAuth()),
-        HotToastModule.forRoot(),
-    ],
+        HotToastModule.forRoot()
+    ]
 })
 export class LoginModule {}

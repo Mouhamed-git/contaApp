@@ -6,6 +6,6 @@ export const environment = {
         projectId: 'devsecops-project-762c7',
         storageBucket: 'devsecops-project-762c7.appspot.com',
         messagingSenderId: '254724296511',
-        appId: '1:254724296511:web:0db78369edce774ac1cd8a',
-    },
+        appId: '1:254724296511:web:0db78369edce774ac1cd8a'
+    }
 };

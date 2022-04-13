@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
     constructor(private dialog: MatDialog, private router: Router, public authService: AuthService) {}
@@ -17,14 +17,14 @@ export class HeaderComponent implements OnInit {
 
     openPaymentDialog(): void {
         this.dialog.open(PaymentComponent, {
-            width: '30%',
+            width: '30%'
             // data: {name: this.name, animal: this.animal},
         });
     }
 
     openDecaissementDialog(): void {
         this.dialog.open(DecaissementComponent, {
-            width: '30%',
+            width: '30%'
             // data: {name: this.name, animal: this.animal},
         });
     }

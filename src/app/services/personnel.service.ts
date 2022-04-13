@@ -5,7 +5,7 @@ import { from } from 'rxjs';
 import { TransactionModel } from '../shared/models/transaction-model';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class PersonnelService {
     private dbPath: string = 'personnels';
