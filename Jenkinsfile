@@ -23,7 +23,7 @@ pipeline {
 
         stage ('SCA') {
             steps {
-                sh 'npm audit fix && npm audit'
+                sh 'npm audit fix --force && npm audit'
             }
         }
       
