@@ -16,7 +16,7 @@ pipeline {
         stage ('Check-Git-Secret') {
           steps {
             sh 'rm truefflehog.json || true'
-            sh 'docker run gesellix/trufflehog --json https://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@github.com/Muhamed-git/contaApp.git > truefflehog.json'
+            sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog.json'
             sh 'cat truefflehog.json'
           }
         }
