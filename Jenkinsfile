@@ -3,7 +3,7 @@ pipeline {
     stages {
        stage ('Checkout-Master-Branch') {
          steps {
-            sh 'git checkout master'
+            sh 'git checkout dev'
          }
         }
       
