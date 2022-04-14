@@ -18,6 +18,7 @@ pipeline {
                 sh 'npm audit fix && npm audit'
             }
         }
+
         stage ('Check-Git-Secret') {
           steps {
             sh 'rm truefflehog.json || true'
