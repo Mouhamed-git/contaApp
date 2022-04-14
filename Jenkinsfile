@@ -13,11 +13,12 @@ pipeline {
             }
         }
         
-        stage ('Npm Check') {
+        stage ('SCA') {
             steps {
                 sh 'npm audit fix && npm audit'
             }
         }
+
         stage ('Check-Git-Secret') {
           steps {
             sh 'rm truefflehog.json || true'
