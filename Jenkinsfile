@@ -1,21 +1,15 @@
 pipeline {
     agent any
     stages {
-       stage ('Checkout-Master-Branch') {
-         steps {
-            sh 'git checkout dev'
-         }
+        stage ('Checkout-Master-Branch') {
+          steps {
+            sh 'git checkout master'
+          }
         }
       
         stage ('Initialize') {
             steps {
                 sh 'npm install'
-            }
-        }
-        
-        stage ('SCA') {
-            steps {
-                sh 'npm audit fix && npm audit'
             }
         }
 
@@ -26,14 +20,11 @@ pipeline {
             sh 'cat truefflehog.json'
           }
         }
-        
+
         stage ('SCA') {
-          steps {
-            sh 'rm -rf odc-reports/** || true'
-            sh 'curl -o owasp-dependency-check.sh https://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@raw.githubusercontent.com/Mouhamed-git/contaApp/master/owasp-dependency-check.sh?token=GHSAT0AAAAAABRCFFZSRG7DJP4JDCQBCZX2YSEF4GA'
-            sh 'bash owasp-dependency-check.sh'
-            sh 'cat odc-reports/dependency-check-report.json'
-          }
+            steps {
+                sh 'npm audit fix && npm audit'
+            }
         }
       
         stage ('SAST') {

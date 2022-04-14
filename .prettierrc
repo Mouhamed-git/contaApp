@@ -2,5 +2,8 @@
     "tabWidth": 4,
     "singleQuote": true,
     "printWidth": 120,
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "trailingComma": "none",
+    "endOfLine": "auto"
 }
+

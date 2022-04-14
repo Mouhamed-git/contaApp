@@ -5,7 +5,7 @@ import { from } from 'rxjs';
 import { AuthModel } from '../shared/models/auth-model';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class AuthService {
     currentUser = authState(this.auth);

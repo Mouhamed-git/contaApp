@@ -6,7 +6,7 @@ import { TransactionType } from '../shared/enums/transaction-type';
 import { TransactionModel } from '../shared/models/transaction-model';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class TransactionService {
     private dbPath: string = 'transactions';
@@ -19,7 +19,7 @@ export class TransactionService {
     save(transaction: TransactionModel) {
         return from(
             addDoc(this.transactionRef, {
-                ...transaction,
+                ...transaction
             })
         );
     }

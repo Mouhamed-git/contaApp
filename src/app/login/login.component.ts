@@ -10,7 +10,7 @@ import { FormValidator } from '../utils/form-validator';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
     faEnvelope = faEnvelope;
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
                 this.toast.observe({
                     loading: 'Connexion en cours...',
                     success: 'Connexion réussi',
-                    error: 'Email/Mot de passe incorrect',
+                    error: 'Email/Mot de passe incorrect'
                     //error: ({ message }) => `${message}`
                 })
             )

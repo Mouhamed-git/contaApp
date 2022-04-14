@@ -8,7 +8,7 @@ describe('DecaissementComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [DecaissementComponent],
+            declarations: [DecaissementComponent]
         }).compileComponents();
     });
 

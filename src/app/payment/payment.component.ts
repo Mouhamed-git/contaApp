@@ -15,7 +15,7 @@ import { FormValidator } from '../utils/form-validator';
 @Component({
     selector: 'app-payment',
     templateUrl: './payment.component.html',
-    styleUrls: ['./payment.component.scss'],
+    styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
     payment: PaymentModel = new PaymentModel();
@@ -82,7 +82,7 @@ export class PaymentComponent implements OnInit {
                 this.toast.observe({
                     loading: 'Enregistrement en cours ...',
                     success: 'Payement enregistré avec succès',
-                    error: ({ message }) => `${message}`,
+                    error: ({ message }) => `${message}`
                 })
             )
             .subscribe(
