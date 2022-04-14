@@ -1,17 +1,10 @@
 pipeline {
     agent any
     stages {
-<<<<<<< HEAD
         stage ('Checkout-Master-Branch') {
           steps {
             sh 'git checkout master'
           }
-=======
-       stage ('Checkout-Master-Branch') {
-         steps {
-            sh 'git checkout dev'
-         }
->>>>>>> master
         }
       
         stage ('Initialize') {
