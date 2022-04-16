@@ -47,7 +47,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com:/var/www/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com:/var/www'
                }
            }
        }
