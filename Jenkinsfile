@@ -52,13 +52,13 @@ pipeline {
            }
        }
         
-//        stage ('DAST') {
-//            steps {
-//                sshagent(['zap']) {
-//                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-35-172-134-38.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.221.215.41/" || true'
-//                }
-//            }
-//        }
+       stage ('DAST') {
+           steps {
+               sshagent(['zap']) {
+                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.174.178.12/" || true'
+               }
+           }
+       }
        
     }
 }
