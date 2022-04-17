@@ -12,6 +12,16 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage ('SAST') {
+          steps {
+              script {
+                def scannerHome = tool 'sonar-scanner';
+                withSonarQubeEnv('sonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
+                }
+              }
+          }
+        }
 
         stage ('Check-Git-Secret') {
           steps {
@@ -25,17 +35,6 @@ pipeline {
             steps {
                 sh 'npm audit fix --force || true && npm audit || true'
             }
-        }
-      
-        stage ('SAST') {
-          steps {
-              script {
-                def scannerHome = tool 'sonar-scanner';
-                withSonarQubeEnv('sonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
-                }
-              }
-          }
         }
       
         stage ('Build') {
