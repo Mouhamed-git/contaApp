@@ -27,38 +27,38 @@ pipeline {
             }
         }
         
-        stage ('SAST') {
-            steps {
-              script {
-                def scannerHome = tool 'sonar-scanner';
-                withSonarQubeEnv('sonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
-                }
-              }
-          }
-        }
-      
-//         stage ('Build') {
-//            steps {
-//                 sh 'npm run build'
-//             }
+//         stage ('SAST') {
+//             steps {
+//               script {
+//                 def scannerHome = tool 'sonar-scanner';
+//                 withSonarQubeEnv('sonarQube') {
+//                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
+//                 }
+//               }
+//           }
 //         }
+      
+        stage ('Build') {
+           steps {
+                sh 'npm run build'
+            }
+        }
 
-//         stage ('Deploy') {
-//            steps {
-//                sshagent(['nginx']) {
-//                    sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com:/var/www'
-//                }
-//            }
-//        }
+        stage ('Deploy') {
+           steps {
+               sshagent(['nginx']) {
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com:/var/www'
+               }
+           }
+       }
         
-//        stage ('DAST') {
-//            steps {
-//                sshagent(['zap']) {
-//                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.174.178.12/" || true'
-//                }
-//            }
-//        }
+       stage ('DAST') {
+           steps {
+               sshagent(['zap']) {
+                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.174.178.12/" || true'
+               }
+           }
+       }
        
     }
 }
