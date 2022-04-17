@@ -27,16 +27,16 @@ pipeline {
             }
         }
       
-//         stage ('SAST') {
-//           steps {
-//               script {
-//                 def scannerHome = tool 'sonar-scanner';
-//                 withSonarQubeEnv('sonarQube') {
-//                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
-//                 }
-//               }
-//           }
-//         }
+        stage ('SAST') {
+          steps {
+              script {
+                def scannerHome = tool 'sonar-scanner';
+                withSonarQubeEnv('sonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
+                }
+              }
+          }
+        }
       
         stage ('Build') {
            steps {
