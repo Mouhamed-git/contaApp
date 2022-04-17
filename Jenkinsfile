@@ -23,12 +23,12 @@ pipeline {
 
         stage ('SCA') {
             steps {
-                sh 'npm audit fix && npm audit'
+                sh 'npm audit fix --force || true && npm audit || true'
             }
         }
-      
+        
         stage ('SAST') {
-          steps {
+            steps {
               script {
                 def scannerHome = tool 'sonar-scanner';
                 withSonarQubeEnv('sonarQube') {
@@ -47,7 +47,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-82-99-66.compute-1.amazonaws.com:~/'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com:/var/www'
                }
            }
        }
@@ -55,8 +55,7 @@ pipeline {
        stage ('DAST') {
            steps {
                sshagent(['zap']) {
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-84-201-26.compute-1.amazonaws.com 
-                       "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://44.201.89.145/" || true'
+                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-174-178-12.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://54.174.178.12/" || true'
                }
            }
        }
