@@ -13,30 +13,30 @@ pipeline {
             }
         }
 
-//         stage ('Check-Git-Secret') {
-//           steps {
-//             sh 'rm truefflehog.json || true'
-//             sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog.json'
-//             sh 'cat truefflehog.json'
-//           }
-//         }
+        stage ('Check-Git-Secret') {
+          steps {
+            sh 'rm truefflehog.json || true'
+            sh 'docker run gesellix/trufflehog --json https://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@github.com/Mouhamed-git/contaApp.git > truefflehog.json'
+            sh 'cat truefflehog.json'
+          }
+        }
 
-//         stage ('SCA') {
-//             steps {
-//                 sh 'npm audit fix --force || true && npm audit || true'
-//             }
-//         }
+        stage ('SCA') {
+            steps {
+                sh 'npm audit fix --force || true && npm audit || true'
+            }
+        }
         
-//         stage ('SAST') {
-//             steps {
-//               script {
-//                 def scannerHome = tool 'sonar-scanner';
-//                 withSonarQubeEnv('sonarQube') {
-//                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
-//                 }
-//               }
-//           }
-//         }
+        stage ('SAST') {
+            steps {
+              script {
+                def scannerHome = tool 'sonar-scanner';
+                withSonarQubeEnv('sonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devsecops-app -Dsonar.sources=src"
+                }
+              }
+          }
+        }
       
         stage ('Build') {
            steps {
@@ -47,7 +47,7 @@ pipeline {
         stage ('Deploy') {
            steps {
                sshagent(['nginx']) {
-                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-3-84-0-230.compute-1.amazonaws.com:/var/www'
+                   sh 'scp -o StrictHostKeyChecking=no -r dist/** ubuntu@ec2-44-204-3-212.compute-1.amazonaws.com:/var/www'
                }
            }
        }
@@ -55,7 +55,7 @@ pipeline {
        stage ('DAST') {
            steps {
                sshagent(['zap']) {
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-100-26-206-245.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://3.84.0.230/" || true'
+                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-206-204-107.compute-1.amazonaws.com "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://44.204.3.212/" || true'
                }
            }
        }
